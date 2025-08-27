@@ -6,7 +6,7 @@ import Login from '../Pages/Login'
 import Signup from '../Pages/Signup'
 import Content from '../Pages/Content'
 import ContentPost from '../Pages/ContentPost'
-import ProtectedRoute from '../components/ProtectedRoute'
+import ProtectedRoute from '../Components/ProtectedRoute'
 import AdminDashboard from '../Pages/Admin/AdminDashboard'
 import UserManagement from '../Pages/Admin/UserManagement'
 import Analytics from '../Pages/Admin/Analytics'
@@ -15,14 +15,15 @@ import ContentEditor from '../Components/ContentEditor'
 import ContentManagement from '../Pages/Admin/ContentManagement'
 import TermsOfService from '../Pages/TermsOfService'
 import PolicyPage from '../Pages/PolicyPage'
+import ProtectedAuthRoutes from '../Components/ProtectedAuthRoutes'
 
 const Navroutes = () => {
   return (
     <Routes>
         {/* Public routes */}
         <Route path="/" element={<Home/>} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<ProtectedAuthRoutes><Login /></ProtectedAuthRoutes>} />
+        <Route path="/signup" element={<ProtectedAuthRoutes><Signup /></ProtectedAuthRoutes >} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route path="/content" element={<Content />} />
         <Route path="/content/:id" element={<ContentPost />} />
